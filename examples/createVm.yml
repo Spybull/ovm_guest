@@ -1,0 +1,27 @@
+---
+- name: "Create Vm from scratch"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: "Create Vm"
+      ovmm_vm:
+        state: present
+        name: "example.domain.local"
+        ovm_host: ovmhost.domain.local
+        ovm_port: 7002
+        ovm_user: adminLogin
+        ovm_pass: adminPass
+        server_pool: "srvPool"
+        repository: srvRepo
+        memory: 1024
+        vcpu_cores: 2
+        operating_system: "Oracle Linux 7"
+        boot_order:
+          - DISK
+          - CDROM
+          - PXE
+        networks: ccbfarm-lan
+        disks:
+          - ["example-root", 10, "srvRepo"]
+        map_disk: "fcos-install.iso"

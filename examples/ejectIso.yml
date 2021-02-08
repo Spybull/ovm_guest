@@ -1,0 +1,14 @@
+---
+- name: "Unmap disk"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: "Eject ISO file"
+      ovmm_vm:
+        state: eject
+        name: example.domain.local
+        ovm_host: ovmhost.domain.local
+        ovm_port: 7002
+        ovm_user: adminLogin
+        ovm_pass: adminPass

@@ -1,0 +1,14 @@
+---
+- name: "Delete Vm from ovm"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: "Delete Vm"
+      ovmm_vm:
+        state: absent
+        name: example.domain.local
+        ovm_host: ovmhost.domain.local
+        ovm_port: 7002
+        ovm_user: adminLogin
+        ovm_pass: adminPass

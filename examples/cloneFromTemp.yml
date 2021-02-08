@@ -1,0 +1,28 @@
+---
+- name: "Clone Vm from template"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: "Clone vm"
+      ovmm_vm:
+        state: clone_template
+        name: "example.domain.local"
+        ovm_host: ovmhost.domain.local
+        ovm_port: 7002
+        ovm_user: adminLogin
+        ovm_pass: adminPass
+        server_pool: "srvPool"
+        repository: srvRepo
+        memory: 1024
+        vcpu_cores: 2
+        vmTemplate: ol7-uek-tmpl
+        vmCloneDefinition: base
+        ipv4_bootp: static
+        ipv4_addr: 192.168.100.100
+        ipv4_netmask: 255.255.255.0
+        ipv4_gateway: 192.168.100.1
+        ipv4_dns_servers:
+          - 8.8.8.8
+          - 8.8.4.4
+        vmrootpassword: "justPass"

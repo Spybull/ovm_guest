@@ -1,0 +1,14 @@
+---
+- name: "Stop virtual machine"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: "Stop Vm"
+      ovmm_vm:
+        state: stop
+        name: example.domain.local
+        ovm_host: ovmhost.domain.local
+        ovm_port: 7002
+        ovm_user: adminLogin
+        ovm_pass: adminPass

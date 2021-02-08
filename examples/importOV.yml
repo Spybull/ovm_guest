@@ -1,0 +1,15 @@
+---
+- name: "Import ovf/ova/iso file to OracleVm repository"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: "Import file"
+      ovmm_vm:
+        state: import
+        ovm_host: ovmhost.domain.local
+        ovm_port: 7002
+        ovm_user: adminLogin
+        ovm_pass: adminPass
+        repository: srvRepo
+        appliance_url: "http://repo.domain.local/iso/fedora_coreos_32.ova"

@@ -1,0 +1,14 @@
+---
+- name: "Start virtual machine"
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: "Start Vm"
+      ovmm_vm:
+        state: start
+        name: example.domain.local
+        ovm_host: ovmhost.domain.local
+        ovm_port: 7002
+        ovm_user: adminLogin
+        ovm_pass: adminPass
